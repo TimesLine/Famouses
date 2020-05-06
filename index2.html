@@ -1,0 +1,65 @@
+
+<!doctype html>
+<meta charset=utf-8>
+<title>Timeline</title>
+<style>
+	html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="popup.css" />
+<body>
+	<div id="timeline" style="width: 100%; height: 100%"></div>
+	<script src="bundle.js"></script>
+	<script>
+		async function go() {
+			const events = [
+	{
+		"lbl": "Plato",
+		"dmin": -75673612800000,
+		"d": -75484224000001,
+		"ed": -73149004800000,
+		"dmax": -73085846400001
+
+	},
+	{
+		"lbl": "Confucius",
+		"d": -79555046400000,
+		"ed": -77251536000000
+	},
+	{
+		"lbl": "Karl Marx",
+		"d": -4785955200000,
+		"ed": -2739225600000,
+		"img": "jpg",
+		"wid": "Q9061"
+	}]
+			const t = new Timeline.default(
+				{
+					center: Date.UTC(2020),
+					bands: [
+						new Timeline.EventsBand({
+							events,
+							heightRatio: .5,
+							visibleRatio: .2,
+							zoomLevel: 1,
+						}),
+						new Timeline.MinimapBand({
+							heightRatio: .5,
+							topOffsetRatio: .5,
+						}),
+					],
+					imagePath: '/examples/images',
+					rootElement: document.getElementById('timeline'),
+				},
+			)
+			t.on('select', (event) => {
+				t.showPopup(event)
+			})
+		}
+		go()
+	</script>
+</body>

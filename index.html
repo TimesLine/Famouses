@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+  <title>مشاهیر</title>
+  
+  <script src="vis.min.js"></script>
+  <script src="Famouses.js"></script>
+  <script src="Hokomat.js"></script>
+  <link href="vis.min.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="jquery.min.js"></script>
+</head>
+<body>
+  
+<div id="timeline" class="center-screen"></div>
+<script>
+
+var el = document.getElementById("timeline");
+
+
+// Configuration for the Timeline
+var options = {
+  showCurrentTime: false,
+  selectable: false,
+  width: "100%",
+  margin: {
+    item: 10
+  },
+  minHeight : 500,
+  
+};
+
+var data = new vis.DataSet();
+
+data.add(famousesList);
+data.add(HokamatList);
+
+var timeline = new vis.Timeline(el,data, options);
+  </script>
+</body>
+</html>
